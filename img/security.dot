@@ -1,0 +1,12 @@
+digraph "Security" {
+
+  graph [rankdir=TB]
+  node [shape=box]
+
+  Group:n -> Group:s [label="member of"]
+  "User" -> "Group" [label="member of"]
+  {rank=same; "User" "Group" }
+  "User" -> "Role" [label="has (in context)"]
+  "Group" -> "Role" [label="has (in context)"]
+  "Role" -> "Permission" [label="contains"]
+}

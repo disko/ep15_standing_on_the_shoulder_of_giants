@@ -1,0 +1,10 @@
+digraph "resources" {
+
+  graph [rankdir=LR]
+  node [shape=box]
+
+  "Node" -> "Content"
+  "Content" -> "Document"
+  "Content" -> "File"
+  "File" -> "Image"
+}

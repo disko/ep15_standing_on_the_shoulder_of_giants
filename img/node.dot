@@ -1,0 +1,17 @@
+digraph "Node" {
+
+  node [shape=box]
+
+  subgraph cluster_node {
+    label = "Node"
+    node_id [label="id"]
+    node_parent_id [label="parent_id"]
+    node_parent_id -> node_id [label="parent/children"]
+  }
+  subgraph cluster_content {
+    label = "Content"
+    content_id [label="id"]
+  }
+  content_id -> node_id
+  "Node" -> "Content"
+}

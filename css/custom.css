@@ -1,0 +1,35 @@
+@import url(reveal.css);
+@import url(theme/black.css);
+
+.reveal strong, .reveal .strong {
+  color: #42affa;
+}
+
+.reveal pre {
+  background: #3F3F3F;
+}
+
+.diagram-data {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+/*.diagram-slide g.node, .diagram-slide g.node rect {
+  fill: none;
+}
+
+.edgePath .path {
+  stroke: white !important;
+}
+*/
+
+.reveal pre {
+  width: 60%;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+.reveal pre code {
+  max-height: none;
+}
