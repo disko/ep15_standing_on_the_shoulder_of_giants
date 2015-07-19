@@ -94,30 +94,35 @@
               irc://irc.freenode.net/#kotti
             </a>
           </p>
+          <aside class="notes">
+            <ul>
+              <li>not really used to giving talks at conferences</li>
+              <li>even less in english</li>
+              <li>be patient</li>
+              <li>hope you can stand my terrible accent for the next 25 minutes</li>
+            </ul>
+          </aside>
         </section>
 
         <section id="outline">
           <h1>This Talk</h1>
-          <ol class="fragments">
-            <li class="fragment">
-              <strong>What?</strong> (bird's eye perspective)
+          <ul>
+            <li>
+              <strong>Why does Kotti exist?</strong>
             </li>
-            <li class="fragment">
-              <strong>Why?</strong> (reasons)
+            <li>
+              <strong>Who are these giants?</strong>
             </li>
-            <li class="fragment">
-              <strong>What?</strong> (goals / features)
+            <li>
+              <strong>How are they utilized by Kotti?</strong>
             </li>
-            <li class="fragment">
-              <strong>How?</strong> (the giants)
+            <li>
+              <strong>Example / Code</strong>
             </li>
-            <li class="fragment">
-              <strong>Examples!</strong> (code)
-            </li>
-            <li class="fragment">
+            <li>
               <strong>Q&amp;A</strong> (if we have time)
             </li>
-          </ol>
+          </ul>
         </section>
 
         <section id="section_why">
@@ -160,48 +165,43 @@
           <section>
             <p>
               <img src="img/toomanystrings.jpg" alt="too many strings" width="450px">
-              <strong>Often too many</strong> features out of the box
             </p>
+            <aside class="notes">
+              <p>
+                <strong>Often too many</strong> features out of the box
+              </p>
+            </aside>
           </section>
           <section>
             <img src="img/firefighter.jpg" alt="firefighter" width="450px">
-            and you constantly find yourself fighting the framework
+            <aside class="notes">
+              <p>and you constantly find yourself fighting the framework</p>
+            </aside>
           </section>
           <section>
+            <aside class="notes">
+              <p>based on Zope 2 (monolithic) and Zope 3 (Components)</p>
+              <p>a dozen or so form frameworks</p>
+              <p>
+                &ldquo;preferably <strong>only one</strong> obvious <strong>way to do it</strong>&rdquo;
+              </p>
+              <p>uses (multi) adapters and utilities as API</p>
+            </aside>
             <ul>
-              <li>
-              </li>
               <li>
                 multiple competing technologies
               </li>
               <li>
                 doesn't conform to "The Zen of Python"
-                <ul>
-                  <li>
-                    <q>
-                      &ldquo;preferably <strong>only one</strong> obvious <strong>way to do it</strong>&rdquo;
-                    </q>
-                  </li>
-                </ul>
               </li>
               <li>
-                based on
-                <ul>
-                  <li>
-                    Zope2 (monolithic)
-                  </li>
-                  <li>
-                    Zope 3 (components)
-                  </li>
-                  <li>
-                    <q>
-                      &ldquo;everything is a adapter or utility&rdquo;
-                    </q> – Lennart Regebro
-                  </li>
-                </ul>
-              </li>
-              <li>
-                complex (ZCA)
+                complex
+                  <ul>
+                    <li>ZCA</li>
+                    <li>adapters</li>
+                    <li>utilities</li>
+                    <li>...</li>
+                  </ul>
               </li>
             </ul>
           </section>
@@ -211,21 +211,21 @@
         </section>
 
         <section id="pyramid">
+          <aside class="notes">
+            OTOH there's Pyramid, which perfectly fits my brain
+          </aside>
           <img src="img/pyramid.png" alt="Pyramid" height="150">
-          <section>
-            &#160;
-          </section>
           <section>
             <img src="img/fitsmybrain.png" alt="Fits my brain!">
           </section>
           <section>
             <h2>Features</h2>
-            <ul>
+            <ul class="fragments">
               <li>
                 small core
               </li>
               <li>
-                excellent documentation!
+                excellent documentation
               </li>
               <li>
                 pythonic
@@ -233,7 +233,7 @@
               <li>
                 low level
               </li>
-              <li>
+              <li class="fragment">
                 unopinionated
                 <ul>
                   <li>
@@ -247,7 +247,7 @@
                   </li>
                 </ul>
               </li>
-              <li>
+              <li class="fragment">
                 <q cite="http://trypyramid.com/">
                   &ldquo;framework framework&rdquo;
                 </q>
@@ -342,8 +342,11 @@
           <section>
             <h1>
               <i class="fa fa-sitemap"></i>
-              Dictionary Protocol
+              The Node Class
             </h1>
+            <h2 class="strong">
+              Dictionary Protocol
+            </h2>
             <pre><code class="python">
 from kotti.resources import Document
 from kotti.resources import get_root
@@ -364,7 +367,13 @@ root['my-document'] = Document(title='My Document', description='foo',
             </aside>
           </section>
           <section>
-            <h1>Traversal</h1>
+            <h1>
+              <i class="fa fa-sitemap"></i>
+              The Node Class
+            </h1>
+            <h2 class="strong">
+              Traversal
+            </h2>
             <pre><code class="python">
 a = root['a'] = Document(title='A', description='Document A')
 b = root['a']['b'] = Document(title='B', description='Document B')
@@ -434,6 +443,20 @@ print Node.query.filter(Node.title == 'My Document').one()
               </ul>
             </aside>
           </section>
+          <section>
+            <h1>Alembic</h1>
+            <ul>
+              <li>DB migrations</li>
+              <li>DDL (transactional, if supported by DBMS)</li>
+              <li>DML</li>
+              <li>environments</li>
+            </ul>
+          </section>
+          <aside class="notes">
+            <ul>
+              <li>multiple environments can be used for add ons</li>
+            </ul>
+          </aside>
         </section>
 
         <section>
@@ -500,14 +523,172 @@ print Node.query.filter(Node.title == 'My Document').one()
         </section>
 
         <section>
+          <img src="img/repoze.workflow.png" alt="repoze.workflow"
+               height="150">
+          <section>
+            <ul>
+              <li>
+                a content workflow system
+              </li>
+              <li>
+                <strong>states</strong> define
+                <ul>
+                  <li>
+                    role / permission mapping
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <strong>transitions</strong> define
+                <ul>
+                  <li>
+                    from_state
+                  </li>
+                  <li>
+                    to_state
+                  </li>
+                  <li>
+                    required permission
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <img src="img/depot.png" alt="Depot" height="150">
+          <section>
+            <ul>
+              <li>
+                storing and serving files in web applications
+              </li>
+              <li>
+                multiple backends
+                <ul>
+                  <li>local filesystem</li>
+                  <li>S3</li>
+                  <li>GridFS</li>
+                  <li>roll your own</li>
+                </ul>
+              </li>
+              <li>
+                integrates with SQLAlchemy
+                <ul>
+                  <li>
+                    files are handled like a plain model attribute
+                  </li>
+                  <li>
+                    transaction aware: Rollback causes the files to be deleted
+                  </li>
+                </ul>
+              </li>
+              <li>
+                see talk on tuesday, 11:00 in Barria2 room!
+              </li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
           <img src="img/kotti.png" alt="Kotti" height="150">
-          <h1>
-            Wiring it all together
-          </h1>
+          <section>
+            <h1>
+              Wiring it all together…
+            </h1>
+          </section>
+          <section>
+            <aside class="notes">
+              <ul>
+                <li>first prototype in just 2 days</li>
+                <li>i learned about and joined in 2012 (Plone Konferenz)</li>
+                <li>biggest mistake: 0.6 should've been 1.0 already</li>
+                <li>number of features in 0.10 alone would have justified 3 or 4 releases / versions</li>
+                <li>5 contibutors with push permission</li>
+              </ul>
+            </aside>
+            <ul>
+              <li>started by Daniel Nouri in 2011</li>
+              <li>1.0 in January 2015</li>
+              <li>current version: 1.1.4</li>
+              <li>active &amp; heahlthy community</li>
+            </ul>
+          </section>
+          <section>
+            <h1 class="strong">Configuration</h1>
+            <pre><code class="ini">[app:kotti]
+use = egg:kotti
+sqlalchemy.url = sqlite:///%(here)s/Kotti.db
+# sqlalchemy.url = postgres://user:pass@host/db
+kotti.configurators =
+    kotti_tinymce.kotti_configure
+    kotti_youraddon.kotti_configure
+
+[filter:fanstatic]
+use = egg:fanstatic#fanstatic
+
+[pipeline:main]
+pipeline =
+    fanstatic
+    kotti</code></pre>
+          </section>
+          <section>
+            <h1 class="strong">Security</h1>
+            <ul>
+              <li>
+                use SQLAlchemy to…
+                <ul>
+                  <li>
+                    store pricipals (users &amp; groups) in the DB
+                  </li>
+                  <li>
+                    attach (inheritable) ACLs to each node
+                  </li>
+                </ul>
+              </li>
+              <li>
+                use Pyramid for…
+                <ul>
+                  <li>
+                    authentication
+                  </li>
+                  <li>
+                    authorization
+                  </li>
+                </ul>
+              </li>
+              <li>
+                use repoze.workflow to…
+                <ul>
+                  <li>
+                    recompute ACLs on workflow state changes
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </section>
         </section>
 
         <section id="section_example">
-          <h1>Examples</h1>
+          <h1>Example</h1>
+          <section>
+            <h2 class="strong">Creating an addon</h2>
+            <pre><code class="shell">$ pcreate -s kotti kotti_myaddon
+Author name [Andreas Kaiser]:
+Author email [disko@binary-punks.com]:
+Github username [Kotti]:
+[… lot of output …]
+===============================================================================
+Welcome to Kotti!
+
+Documentation: http://kotti.readthedocs.org/
+Development:   https://github.com/Kotti/Kotti/
+Issues:        https://github.com/Kotti/Kotti/issues?state=open
+IRC:           irc://irc.freenode.net/#kotti
+Mailing List:  https://groups.google.com/group/kotti
+===============================================================================
+            </code></pre>
+          </section>
           <section>
             <h2 class="strong">
               Custom Content Type
@@ -528,8 +709,12 @@ class Document(Content):</code><code class="fragment">
         addable_to=[u'Document'])</code></pre>
           </section>
           <section>
+            <img src="img/screen_addmenu.png" alt="Add menu">
+          </section>
+          <section>
             <h2 class="strong">
-              Schema definition for validation and form creation
+              Schema definition for <br>
+              validation and form creation
             </h2>
             <pre><code>import colander
 import deform
@@ -562,7 +747,61 @@ class DocumentAddForm(AddFormView):
 class DocumentEditForm(EditFormView):
     schema_factory = DocumentSchema</code></pre>
           </section>
+          <section>
+            <img src="img/screen_addform.png" alt="Add form">
+          </section>
+          <section>
+            <img src="img/screen_addvalidation.png" alt="Add validation">
+          </section>
+          <section class="fragments">
+            <h2 class="strong">View(s)</h2>
+            <pre><code class="python">from pyramid.view import view_config
+@view_config(name='view', context=Document, permission='view',
+             renderer='kotti:templates/view/document.pt')
+def document_view(context, request):
+    return {}</code></pre>
 
+            <div class="fragment">
+              <h3>or</h3>
+
+              <pre><code class="python">from pyramid.view import view_config
+from pyramid.view import view_defaults
+from kotti.views import BaseView
+
+@view_defaults(context=Document, permission='view')
+class DocumentViews(BaseView):</code><code class="fragment">
+    @view_config(name='view', renderer='kotti:templates/view/document.pt')
+    def view(self):
+        return {}</code><code class="fragment">
+    @view_config(name='view2', renderer='kotti:templates/view/document2.pt')
+    def view(self):
+        return {'answer': 42}</code><code class="fragment">
+    @view_config(name='json', renderer='json')
+    def view(self):
+        return {'title': self.context.title, 'body': self.context.body, ...}
+        # return self.context
+        </code></pre>
+            </div>
+          </section>
+          <section>
+            <h2 class="strong">Template(s)</h2>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"
+      metal:use-macro="api.macro('kotti:templates/view/master.pt')"&gt;
+  &lt;article metal:fill-slot="content" class="document-view content"&gt;
+    &lt;h1&gt;${context.title}&lt;/h1&gt;
+    &lt;p class="lead"&gt;
+      ${context.description}
+    &lt;/p&gt;
+    &lt;div tal:replace="api.render_template('kotti:templates/view/tags.pt')" /&gt;
+    &lt;div class="body" tal:content="structure context.body | None"&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+&lt;/html&gt;</code></pre>
+          </section>
+          <section>
+            <img src="img/screen_added.png" alt="Added">
+          </section>
         </section>
 
         <section>
@@ -571,39 +810,6 @@ class DocumentEditForm(EditFormView):
             Questions?
           </h1>
         </section>
-
-
-        <section id="section_what">
-          <h1>What</h1>
-          <section>
-            <ul>
-              <li>
-                Python
-                <ul>
-                  <li>fun</li>
-                  <li>productive</li>
-                </ul>
-              </li>
-              <li>
-                Plone
-                <ul>
-                  <li>simple</li>
-                  <li>readable</li>
-                  <li>expressive</li>
-                </ul>
-              </li>
-            </ul>
-          </section>
-          <blockquote cite="http://kotti.readthedocs.org/">
-            <p>
-              &ldquo;<strong>Kotti</strong> is a <strong>high-level</strong>, <strong>pythonic</strong> web application framework based on Pyramid and SQLAlchemy.
-            </p>
-            <p>
-              It <strong>includes</strong> an <strong>extensible</strong> Content Management System called the <strong>Kotti CMS</strong>.&rdquo;
-            </p>
-          </blockquote>
-        </section>
-
         <!--
           http://danielnouri.org/notes/2010/01/25/16-hours-into-a-new-cms-with-pyramid/
           http://danielnouri.org/notes/2011/11/30/how-to-write-an-add-on-for-the-kotti-cms/
@@ -661,424 +867,6 @@ class DocumentEditForm(EditFormView):
           - example
           - q&a
         -->
-
-
-        <!-- Really? Why? -->
-        <section>
-          <section>
-            <h1>Really? Yet another one?</h1>
-            <h1 class="strong">Why?</h1>
-            <h1>A <em>little</em> bit of history…</h1>
-          </section>
-          <section>
-            <h1>Zope &amp; Plone</h1>
-            <ul>
-              <li>they do a lot of things right</li>
-              <li>pioneers</li>
-            </ul>
-            <p><strong>but</strong></p>
-            <ul>
-              <li><strikethrough>lightweight</strikethrough></li>
-              <li><strikethrough>pythonic</strikethrough></li>
-            </ul>
-          </section>
-          <section>
-            bar
-          </section>
-        </section>
-
-        <section>
-          <p>So let's build something <strong>new <em>from scratch</em></strong>.</p>
-          <p>And <strong>this time</strong> we'll make <strong>everything right</strong>!</p>
-        </section>
-
-        <!-- Giants -->
-        <section>
-          <h1 class="strong">Giants?</h1>
-
-          <section class="fragments">
-            <p class="fragment">
-              <img src="img/pyramid.png" width="50%" style="background: white">
-            </p>
-            <ul class="fragment">
-              <li>solid foundation</li>
-              <li>unopinionated</li>
-              <ul>
-                <li>persistence</li>
-                <li>templating</li>
-                <li>...</li>
-              </ul>
-              <li>framework framework</li>
-            </ul>
-          </section>
-
-          <section class="fragments">
-            <p class="fragment">
-              <img src="img/sqlalchemy.png" width="50%" style="background: white">
-            </p>
-            <ul class="fragment">
-              <li>Alembic</li>
-              <li>zope.sqlalchemy / transaction</li>
-            </ul>
-          </section>
-
-          <section>
-            <p>
-              <img src="img/bootstrap.svg" width="25%" style="background: white">
-            </p>
-          </section>
-          <section>
-            Colander / Deform
-          </section>
-        </section>
-
-        <!-- Features -->
-        <section>
-          <h1>Features</h1>
-          <ul>
-            <li>Persistence</li>
-            <li>Security</li>
-            <li>Security</li>
-          </ul>
-        </section>
-
-        <!-- Persistence -->
-        <section>
-          <section>
-            <h1 class="strong">Persistence</h1>
-            <p>(almost) plain SQLAlchemy</p>
-            <p>Nodes</p>
-          </section>
-          <!-- Nodes / Traversal -->
-          <section>
-            <h1>Persistence – <span class="strong">Nodes / Traversal</span></h1>
-            <img src="img/node.svg" alt="">
-          </section>
-          <section>
-            <h1>Persistence – <span class="strong">Content Types</span></h1>
-            <ul>
-              <li>SQLAlchemy Declarative</li>
-              <li>Joined Table Inheritance</li>
-            </ul>
-            <img src="img/resources.svg" alt="">
-          </section>
-          <section>
-            <h1>Persistence – <span class="strong">Custom Content Type</span></h1>
-          </section>
-        </section>
-
-        <!-- Security -->
-        <section>
-          <section class="fragments">
-            <h1 class="strong">Security</h1>
-            <ul>
-              <li class="fragment">Users and Groups</li>
-              <li class="fragment">Permissions</li>
-              <li class="fragment">Roles</li>
-              <li class="fragment">Workflow</li>
-            </ul>
-          </section>
-
-          <!-- Security – Users and Groups -->
-          <section>
-            <h1>Security – <span class="strong">Users and Groups</span></h1>
-          </section>
-
-          <!-- Security – Permissions -->
-          <section>
-            <h1>Security – <span class="strong">Permissions</span></h1>
-          </section>
-
-          <!-- Security – Roles -->
-          <section>
-            <h1>Security – <span class="strong">Roles</span></h1>
-            global / local
-          </section>
-
-          <!-- Security – Workflow -->
-          <section>
-            <h1>Security – <span class="strong">Workflow</span></h1>
-          </section>
-        </section>
-
-
-        <!-- UI – Bootstrap 3 -->
-        <section>
-          <h1>UI – <span class="strong">Bootstrap 3</span></h1>
-          <section>Screenshot 1</section>
-          <section>Screenshot 2</section>
-          <section>Screenshot 3</section>
-          <section>Screenshot 4</section>
-        </section>
-
-        <!-- Forms – Colander and Deform -->
-        <section>
-          <h1>Forms – <span class="strong">Colander and Deform</span></h1>
-        </section>
-
-
-
-        <section>
-          <h1>Point of View</h1>
-          <p>
-            Press <strong>ESC</strong> to enter the slide overview.
-          </p>
-          <p>
-            Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-          </p>
-        </section>
-
-        <section>
-          <section id="fragments">
-            <h1>Fragments</h1>
-            <p>Hit the next arrow...</p>
-            <p class="fragment">... to step through ...</p>
-            <p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
-
-            <aside class="notes">
-              This slide has fragments which are also stepped through in the notes window.
-            </aside>
-          </section>
-          <section>
-            <h1>Fragment Styles</h1>
-            <p>There's different types of fragments, like:</p>
-            <p class="fragment grow">grow</p>
-            <p class="fragment shrink">shrink</p>
-            <p class="fragment fade-out">fade-out</p>
-            <p class="fragment current-visible">current-visible</p>
-            <p class="fragment highlight-red">highlight-red</p>
-            <p class="fragment highlight-blue">highlight-blue</p>
-          </section>
-        </section>
-
-        <section id="transitions">
-          <h1>Transition Styles</h1>
-          <p>
-            You can select from different transitions, like: <br>
-            <a href="?transition=none#/transitions">None</a> -
-            <a href="?transition=fade#/transitions">Fade</a> -
-            <a href="?transition=slide#/transitions">Slide</a> -
-            <a href="?transition=convex#/transitions">Convex</a> -
-            <a href="?transition=concave#/transitions">Concave</a> -
-            <a href="?transition=zoom#/transitions">Zoom</a>
-          </p>
-        </section>
-
-        <section id="themes">
-          <h1>Themes</h1>
-          <p>
-            reveal.js comes with a few themes built in: <br>
-            <!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-            <a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-          </p>
-        </section>
-
-        <section>
-          <section data-background="#dddddd">
-            <h1>Slide Backgrounds</h1>
-            <p>
-              Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-            </p>
-            <a href="#" class="navigate-down">
-              <img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-            </a>
-          </section>
-          <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-            <h1>Image Backgrounds</h1>
-            <pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-          </section>
-          <section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-            <h1>Tiled Backgrounds</h1>
-            <pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-          </section>
-          <section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-            <div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-              <h1>Video Backgrounds</h1>
-              <pre><code style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-            </div>
-          </section>
-          <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-            <h1>... and GIFs!</h1>
-          </section>
-        </section>
-
-        <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-          <h1>Background Transitions</h1>
-          <p>
-            Different background transitions are available via the backgroundTransition option. This one's called "zoom".
-          </p>
-          <pre><code>Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
-        </section>
-
-        <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
-          <h1>Background Transitions</h1>
-          <p>
-            You can override background transitions per-slide.
-          </p>
-          <pre><code style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
-        </section>
-
-        <section>
-          <h1>Pretty Code</h1>
-          <pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-          </code></pre>
-          <p>Code syntax highlighting courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-        </section>
-
-        <section>
-          <h1>Marvelous List</h1>
-          <ul>
-            <li>No order here</li>
-            <li>Or here</li>
-            <li>Or here</li>
-            <li>Or here</li>
-          </ul>
-        </section>
-
-        <section>
-          <h1>Fantastic Ordered List</h1>
-          <ol>
-            <li>One is smaller than...</li>
-            <li>Two is smaller than...</li>
-            <li>Three!</li>
-          </ol>
-        </section>
-
-        <section>
-          <h1>Tabular Tables</h1>
-          <table>
-            <thead>
-              <tr>
-                <th>Item</th>
-                <th>Value</th>
-                <th>Quantity</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Apples</td>
-                <td>$1</td>
-                <td>7</td>
-              <tr>
-              <tr>
-                <td>Lemonade</td>
-                <td>$2</td>
-                <td>18</td>
-              <tr>
-              <tr>
-                <td>Bread</td>
-                <td>$3</td>
-                <td>2</td>
-              <tr>
-            </tbody>
-          </table>
-        </section>
-
-        <section>
-          <h1>Clever Quotes</h1>
-          <p>
-            These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-            &ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-          </p>
-          <blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-            &ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-            reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-          </blockquote>
-        </section>
-
-        <section>
-          <h1>Intergalactic Interconnections</h1>
-          <p>
-            You can link between slides internally,
-            <a href="#/2/3">like this</a>.
-          </p>
-        </section>
-
-        <section>
-          <h1>Speaker View</h1>
-          <p>There's a <a href="https://github.com/hakimel/reveal.js#speaker-notes">speaker view</a>. It includes a timer, preview of the upcoming slide as well as your speaker notes.</p>
-          <p>Press the <em>S</em> key to try it out.</p>
-
-          <aside class="notes">
-            Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-          </aside>
-        </section>
-
-        <section>
-          <h1>Export to PDF</h1>
-          <p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, here's an example:</p>
-        </section>
-
-        <section>
-          <h1>Global State</h1>
-          <p>
-            Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-            will be added as a class to the document element when the slide is open. This lets you
-            apply broader style changes, like switching the page background.
-          </p>
-        </section>
-
-        <section data-state="customevent">
-          <h1>State Events</h1>
-          <p>
-            Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-          </p>
-          <pre><code class="javascript" data-trim contenteditable style="font-size: 18px;">
-Reveal.addEventListener( 'customevent', function() {
-  console.log( '"customevent" has fired' );
-} );
-          </code></pre>
-        </section>
-
-        <section>
-          <h1>Take a Moment</h1>
-          <p>
-            Press B or . on your keyboard to pause the presentation. This is helpful when you're on stage and want to take distracting slides off the screen.
-          </p>
-        </section>
-
-        <section>
-          <h1>Much more</h1>
-          <ul>
-            <li>Right-to-left support</li>
-            <li><a href="https://github.com/hakimel/reveal.js#api">Extensive JavaScript API</a></li>
-            <li><a href="https://github.com/hakimel/reveal.js#auto-sliding">Auto-progression</a></li>
-            <li><a href="https://github.com/hakimel/reveal.js#parallax-background">Parallax backgrounds</a></li>
-            <li><a href="https://github.com/hakimel/reveal.js#keyboard-bindings">Custom keyboard bindings</a></li>
-          </ul>
-        </section>
-
-        <section style="text-align: left;">
-          <h1>THE END</h1>
-          <p>
-            - <a href="http://slides.com">Try the online editor</a> <br>
-            - <a href="https://github.com/hakimel/reveal.js">Source code &amp; documentation</a>
-          </p>
-        </section>
 
       </div>
 
