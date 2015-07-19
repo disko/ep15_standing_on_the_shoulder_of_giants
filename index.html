@@ -96,6 +96,9 @@
           </p>
           <aside class="notes">
             <ul>
+              <li>Good afternoon everyone</li>
+              <li>I'm Andreas</li>
+              <li>I live and work in Germany in a small city in the outskirts of Düsseldorf</li>
               <li>not really used to giving talks at conferences</li>
               <li>even less in english</li>
               <li>be patient</li>
@@ -105,6 +108,20 @@
         </section>
 
         <section id="outline">
+          <aside class="notes">
+            <ul>
+              <li>obviuosly about Kotti</li>
+              <li>
+                will cover
+                <ul>
+                  <li>why Kotti came into existance in the first place</li>
+                  <li>who these giants are, on whose shoulders Kotti stands</li>
+                  <li>how Kotti is built on top of them</li>
+                  <li>and finally some code examples, to make it easier for you to understand, what it's like to work with Kotti</li>
+                </ul>
+              </li>
+            </ul>
+          </aside>
           <h1>This Talk</h1>
           <ul>
             <li>
@@ -130,6 +147,11 @@
             Why?
           </h1>
           <section id="subsection_why_orly" class="fragments">
+            <aside class="notes">
+              <p>
+                As a matter of fact all of the Kotti core developers have some common history
+              </p>
+            </aside>
             <h2>
               Yet another web framework?
             </h2>
@@ -152,6 +174,24 @@
               <li>security (permissions, roles, groups)</li>
               <li>workflows</li>
             </ul>
+            <aside class="notes">
+              <ul>
+                <dl>
+                  <dt>OFS</dt>
+                  <dd>simple, yet effective way to persist objects</dd>
+                  <dd>more or less plain Python objects are stored in an object DB</dd>
+                  <dd>supports a folder / file like object tree</dd>
+                  <dt>security</dt>
+                  <dd>great security features</dd>
+                  <dd>groups, users, roles, permissions</dd>
+                  <dd>enables to write applications with very fine grained security</dd>
+                  <dd>also: great security track record</dd>
+                  <dd>very few vulnerabilities compared to other systems of that kind</dd>
+                  <dt>workflows</dt>
+                  <dd>killer feature, that was unprecedented at that time</dd>
+                </dl>
+              </ul>
+            </aside>
           </section>
           <section>
             <p>
@@ -161,6 +201,17 @@
             <p>
               does <strong>not</strong> fit <strong>all</strong> kinds of applications.
             </p>
+            <aside class="notes">
+              <ul>
+                <li>
+                  if you have a classic CMS use case, or need an enterprise CMS application, it's probably a perfect choice.
+                </li>
+                <li>BUT</li>
+                <li>
+                  if you need to implement a highly customized application with some CMS-ish features, it can quickly become a major pain.
+                </li>
+              </ul>
+            </aside>
           </section>
           <section>
             <p>
@@ -180,12 +231,27 @@
           </section>
           <section>
             <aside class="notes">
-              <p>based on Zope 2 (monolithic) and Zope 3 (Components)</p>
-              <p>a dozen or so form frameworks</p>
-              <p>
-                &ldquo;preferably <strong>only one</strong> obvious <strong>way to do it</strong>&rdquo;
-              </p>
-              <p>uses (multi) adapters and utilities as API</p>
+              <ul>
+                <li>
+                  particulary caused by the underlying software stack
+                </li>
+                <li>huge: consists of some 300 packages</li>
+                <li>
+                  uses multiple competing technologies, which
+                </li>
+                <li>
+                  doesn't conform to "The Zen of Python"
+                  <ul>
+                    <li>
+                      to have &ldquo;preferably <strong>only one</strong> obvious <strong>way to do</strong>&rdquo; things
+                    </li>
+
+                  </ul>
+                </li>
+                <li>based on the monolithic Zope 2 AND the component based Zope 3 stacks</li>
+                <li>uses adapters, multiadapters and utilities all over the place</li>
+                <li>long story short…</li>
+              </ul>
             </aside>
             <ul>
               <li>
@@ -196,25 +262,39 @@
               </li>
               <li>
                 complex
-                  <ul>
-                    <li>ZCA</li>
-                    <li>adapters</li>
-                    <li>utilities</li>
-                    <li>...</li>
-                  </ul>
               </li>
             </ul>
           </section>
           <section>
             <img src="img/doesntfit.jpg" alt="Does not fit my brain!">
+            <aside class="notes">
+              fortunately there are smarter people than me, who
+              <ul>
+                <li>
+                  have a similar history and
+                </li>
+                <li>
+                  wanted to preserve the most important features, that Zope pioneered back in the days.
+                </li>
+                <li>
+                  This all with a modern, clean and maintainable code base.
+                </li>
+                <li>
+                  This was the birth of Pyramid, then known as repoze.bfg
+                </li>
+              </ul>
+            </aside>
           </section>
         </section>
 
         <section id="pyramid">
-          <aside class="notes">
-            OTOH there's Pyramid, which perfectly fits my brain
-          </aside>
           <img src="img/pyramid.png" alt="Pyramid" height="150">
+          <section>
+            &#160;
+            <aside class="notes">
+              Greatest thing about Pyramid: fits even my brain
+            </aside>
+          </section>
           <section>
             <img src="img/fitsmybrain.png" alt="Fits my brain!">
           </section>
@@ -231,8 +311,37 @@
                 pythonic
               </li>
               <li>
-                low level
+                low level (micro framework)
               </li>
+              <aside class="notes">
+                It has
+                <ul>
+                  <li>small core,</li>
+                  <li>excellent documentation,</li>
+                </ul>
+                Is
+                <ul>
+                  <li>pythonic and rather</li>
+                  <li>low level, which is why you can also count into the group of microframeworks</li>
+                </ul>
+                And it's also… unopinionated, which means it
+                <ul>
+                  <li>
+                    makes no assumptions about stuff like persistence and forms
+                  </li>
+                  <li>
+                    and only basic assumptions about authentication and authorization, which you could call
+                  </li>
+                  <li>
+                    the least common denominator for all kinds of web applications.
+                  </li>
+                </ul>
+                This all makes it a great…
+                <ul>
+                  <li>framework framework</li>
+                  <li>a framework to build your own framework, which supports <strong>your</strong> opinions</li>
+                </ul>
+              </aside>
               <li class="fragment">
                 unopinionated
                 <ul>
@@ -273,6 +382,9 @@
               </li>
               <li>perfect foundation!</li>
             </ul>
+            <aside class="notes">
+              …what's left to do: make some choices that pyramid didn't make for us (by intention).
+            </aside>
           </section>
           <section>
             <h2>Make some choices!</h2>
@@ -305,20 +417,30 @@
               </li>
               <li>
                 has many nice, useful features
+                <ul>
+                  <li>hybrid properties</li>
+                  <li>association proxies</li>
+                  <li>ordering list</li>
+                </ul>
               </li>
               <li>
-                transactions can be bound to the lifecycle of a Pyramid request <br>through the use of <code>pyramid_tm</code> and <code>zope.sqlalchemy</code>
+                transaction integration with pyramid
               </li>
             </ul>
             <aside class="notes">
               <ul>
                 <li>
-                  almost never worry about transactions
+                  Particularly useful: transactions can be bound to the lifecycle of a Pyramid request <br>through the use of the <code>pyramid_tm</code> and <code>zope.sqlalchemy</code> packages.
                 </li>
               </ul>
             </aside>
           </section>
           <section>
+            <aside class="notes">
+              <p>
+                Now we can implement a Node class in pure SQLAlchemy, that implements what we had with the Object Filesystem in Zope
+              </p>
+            </aside>
             <h1>
               <i class="fa fa-sitemap"></i>
               The Node Class
@@ -360,10 +482,18 @@ root['my-document'] = Document(title='My Document', description='foo',
                                body='<p>some HTML</p>')
             </code></pre>
             <aside class="notes">
-              Nodes are set up to use the adjacency list pattern, and every node knows about its parent.
-              Every Node is a container of other nodes.
-              Every type of Node may have their own view, which is registered like usual.
-              Nodes may have a different views on an instance basis. That is, the root document can have a different view than my personal homepage, although they're both instances of Document.
+              implementing the dictionary protocol means that
+              <ul>
+                <li>
+                  you can treat any instance of the Node class as an dictionary and
+                </li>
+                <li>
+                  get items by their name / key and
+                </li>
+                <li>
+                  also set them like you would with a dictionary.
+                </li>
+              </ul>
             </aside>
           </section>
           <section>
@@ -403,14 +533,12 @@ c = root['a']['b']['c'] = Document(title='C', description='Document C')
               </tbody>
             </table>
             <aside class="notes">
-              <ul>
-                <li>
-                  dict protocol allows traversal
-                </li>
-                <li>
-                  Traversal with persistent, inheritable ACLs
-                </li>
-              </ul>
+              <p>
+                This instantaneously gives us traversal support with Pyramid, as Pyramid "only" requires a __getitem__ method to be implemented, which is exactly the same what a dict does.
+              </p>
+              <p>
+                Beyond that we only need to have an ACL property on the node class to have persistent and inheritable ACLs.
+              </p>
             </aside>
           </section>
           <section>
@@ -430,17 +558,54 @@ print Node.query.filter(Node.title == 'My Document').one()
 "&lt;Document 5 at /my-document&gt;"
             </code></pre>
             <aside class="notes">
-              SQLAlchemy is set up to do polymorphic queries, that is, querying for Nodes will hand you back instances of Document if the Node happens to be a Document.
+              <ul>
+                <li>SQLAlchemy is set up to do polymorphic queries</li>
+                <li>single query can return objects of multiple types</li>
+                <li>querying for Nodes will hand you back instances of Document and File if the Nodes happen to be of that types.</li>
+              </ul>
             </aside>
           </section>
           <section>
             <h1>Joined Table Inheritance</h1>
+            <ul>
+              <li>class hierarchy is broken up among dependent tables</li>
+              <li>each class represented by its own table</li>
+              <li>the respective table only includes attributes local to that class</li>
+            </ul>
             <aside class="notes">
+              <p>Joined Table Inheritance is another nice feature of SQLAlchemy that we use in Kotti.</p>
+              <p>It means that…</p>
+            </aside>
+          </section>
+          <section>
+            <h1>Events</h1>
+            <ul>
+              <li>
+                before_flush
+                <ul>
+                  <li>ObjectUpdate</li>
+                  <li>ObjectInsert</li>
+                  <li>ObjectDelete</li>
+                </ul>
+              </li>
+            </ul>
+            <aside class="notes">
+              The last feature of SQLAlchemy, that I'd like to mention are Eents.
               <ul>
                 <li>
-                  .
+                  SQLAlchemy has a lot of them, but in Kotti we use only one: before_flush
+                </li>
+                <li>
+                  a flush is basically the moment when SQLAlchemy talks to the database.
+                </li>
+                <li>
+                  it is NOT the same as a commit. it's SQLAlchemy emitting SQL and sending it to the DB.
+                </li>
+                <li>
+                  Of course a commit always includes a flush.
                 </li>
               </ul>
+              A SQLAlchemy before flush event can trigger multiple more nuanced events in Kotti. This is a mere convenience thing to ease creation of respective event subscribers in Kotti.
             </aside>
           </section>
           <section>
@@ -453,9 +618,23 @@ print Node.query.filter(Node.title == 'My Document').one()
             </ul>
           </section>
           <aside class="notes">
+            Not exactly part of SQLAlchemy, but closely related (and also written by Mike Bayer) is Alembic.
             <ul>
-              <li>multiple environments can be used for add ons</li>
+              <li>DB Migration tool that supports</li>
+              <li>transactional Data Definition Language operations (such as CREATE or ALTER TABLE) - if the used DBMS supports those (TTBOMK PostgreSQL and MSSQL) and</li>
+              <li>transctional Data Manipulation Language operations.</li>
             </ul>
+            Another useful feature:
+            <ul>
+              <li>supports multiple environments.</li>
+              <li>Comes in extremely handy for add ons: each add on can have its own, independent migration steps.</li>
+            </ul>
+            <p>
+              Kotti provides a script to perform either specific migrations or all migrations for itself and all add ons at once. You can either upgrade to specific revisions or to the latest known revision.
+            </p>
+            <p>
+              Downgrades are also supported for the case that something goes south during a migration and your DB does not support transactional DDL.
+            </p>
           </aside>
         </section>
 
@@ -602,19 +781,96 @@ print Node.query.filter(Node.title == 'My Document').one()
               <ul>
                 <li>first prototype in just 2 days</li>
                 <li>i learned about and joined in 2012 (Plone Konferenz)</li>
-                <li>biggest mistake: 0.6 should've been 1.0 already</li>
+                <li>biggest mistake in terms of marketing: 0.6 should've been 1.0 already</li>
                 <li>number of features in 0.10 alone would have justified 3 or 4 releases / versions</li>
+                <li>switched to semver with 1.0.0</li>
+                <li>9k according to PyPI</li>
                 <li>5 contibutors with push permission</li>
+                <li>~40 contibutors overall</li>
+                <li>even if it's just a missing comma in the docs</li>
               </ul>
             </aside>
             <ul>
               <li>started by Daniel Nouri in 2011</li>
-              <li>1.0 in January 2015</li>
+              <li>BSD licensed</li>
+              <li>1.0.0 in January 2015</li>
               <li>current version: 1.1.4</li>
-              <li>active &amp; heahlthy community</li>
+              <li>9k downloads per month</li>
+              <li>still small, but active &amp; healthy community</li>
+              <li>contributions are always welcome</li>
             </ul>
           </section>
           <section>
+            <h1 class="strong">Code Quality</h1>
+            <p>a.k.a. "everyone loves badges"</p>
+            <aside class="notes">
+              <ul>
+                <li>extensive test suite</li>
+                <li>based on py.test</li>
+                <li>heavy use of reusable fixtures</li>
+              </ul>
+              <ul>
+                <li>Travis CI</li>
+                <li>every commit and pul request</li>
+              </ul>
+              <ul>
+                <li>recently a number of toosl came into life</li>
+                <li>you shouldn't blindly follow all of their suggestions / issues they report, some of them are non-issues</li>
+                <li>BUT they can give VERY valueable insights on your code and help you improve</li>
+              </ul>
+            </aside>
+            <div class="fragments">
+              <dl class="fragment">
+                <dt>
+                  <img src="img/coverage.svg" alt="" height="45">
+                </dt>
+                <dd>
+                  <i>almost</i> Heisenberg quality
+                </dd>
+              </dl>
+              <dl class="fragment">
+                <dt>
+                  <img src="img/travis.svg" alt="" height="45">
+                </dt>
+                <dd>
+                  continuous integration (Python 2.6, 2.7, PostgreSQL, MySQL, SQLite)
+                </dd>
+              </dl>
+              <p>&#160;</p>
+              <dl class="fragment">
+                <dt>
+                  <img src="img/codacy.svg" alt="" height="45">
+                  <img src="img/codeclimate.svg" alt="" height="45">
+                  <img src="img/quantifiedcode.svg" alt="" height="45">
+                </dt>
+                <dd>
+                  static code analysis (<a href="https://www.codacy.com/public/disko/Kotti/dashboard">Codacy</a>, <a href="https://codeclimate.com/github/Kotti/Kotti">Code Climate</a>, <a href="https://www.quantifiedcode.com/app/project/f2a648c15f8e42788aaa4fa12a82df93">QuantifiedCode</a>)
+                </dd>
+              </dl>
+              <dl class="fragment">
+                <dt>
+                  <img src="img/requires.svg" alt="" height="45">
+                </dt>
+                <dd>
+                  (except 1 testing requirement)
+                </dd>
+              </dl>
+            </div>
+          </section>
+<!--
+          <section>
+            <h1>Fixture Dependencies</h1>
+            <img src="img/fixtures.svg" alt="">
+          </section>
+ -->
+          <section>
+            <aside class="notes">
+              <dl>
+                <dt>fanstatic</dt>
+                <dd>Fanstatic is a framework for the automatic publication of Javascript and CSS resources on a web page.</dd>
+                <dd>when we started using it in 2012 most JS libraries were not available through a package manager (NPM / Bower) and build tools for JS/CSS didn't exist.</dd>
+              </dl>
+            </aside>
             <h1 class="strong">Configuration</h1>
             <pre><code class="ini">[app:kotti]
 use = egg:kotti
@@ -633,6 +889,98 @@ pipeline =
     kotti</code></pre>
           </section>
           <section>
+            <h1 class="strong">Example Options</h1>
+            <table>
+              <thead>
+                <tr>
+                  <th>Option</th>
+                  <th>Purpose</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>kotti.available_types</td>
+                  <td>List of active content types</td>
+                </tr>
+                <tr>
+                  <td>kotti.configurators</td>
+                  <td>List of advanced functions for config</td>
+                </tr>
+                <tr>
+                  <td>kotti.root_factory</td>
+                  <td>Override Kotti’s default Pyramid root factory</td>
+                </tr>
+                <tr>
+                  <td>kotti.populators</td>
+                  <td>List of functions to fill initial database</td>
+                </tr>
+                <tr>
+                  <td>kotti.search_content</td>
+                  <td>Override Kotti’s default search function</td>
+                </tr>
+                <tr>
+                  <td>kotti.asset_overrides</td>
+                  <td>Override Kotti’s templates</td>
+                </tr>
+                <tr>
+                  <td>kotti.authn_policy_factory</td>
+                  <td>Component used for authentication</td>
+                </tr>
+                <tr>
+                  <td>kotti.authz_policy_factory</td>
+                  <td>Component used for authorization</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h1 class="strong">Example Options (continued)</h1>
+            <table>
+              <thead>
+                <tr>
+                  <th>Option</th>
+                  <th>Purpose</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>kotti.caching_policy_chooser</td>
+                  <td>Component for choosing the cache header policy</td>
+                </tr>
+                <tr>
+                  <td>kotti.url_normalizer</td>
+                  <td>Component used for url normalization</td>
+                </tr>
+                <tr>
+                  <td>kotti.max_file_size</td>
+                  <td>Max size for file uploads</td>
+                </tr>
+                <tr>
+                  <td>kotti.depot.*.*</td>
+                  <td>Configure the blob storage</td>
+                </tr>
+                <tr>
+                  <td>kotti.sanitizers</td>
+                  <td>Configure available sanitizers</td>
+                </tr>
+                <tr>
+                  <td>kotti.sanitize_on_write</td>
+                  <td>Configure sanitizers to be used on write access to resource objects</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <aside class="notes">
+              <ul>
+                <li>
+                  Let me give you just 1 example of how we combine multiple "best of breed" components to a fully functional system
+                </li>
+                <li>
+                  ACLs are JSON serialized Pyramid ACLs
+                </li>
+              </ul>
+            </aside>
             <h1 class="strong">Security</h1>
             <ul>
               <li>
@@ -804,6 +1152,14 @@ class DocumentViews(BaseView):</code><code class="fragment">
           </section>
         </section>
 
+        <section>
+          <h1>The Future</h1>
+          <ul>
+            <li>
+              will always stay <cite>&ldquo;lean and mean in all of the right ways&rdquo;</cite>
+            </li>
+          </ul>
+        </section>
         <section>
           <h2>Thank you!</h2>
           <h1 class="strong">
