@@ -117,7 +117,7 @@
                   <li>why Kotti came into existance in the first place</li>
                   <li>who these giants are, on whose shoulders Kotti stands</li>
                   <li>how Kotti is built on top of them</li>
-                  <li>and finally some code examples, to make it easier for you to understand, what it's like to work with Kotti</li>
+                  <li>and finally I'll show you some code examples, to make it easier for you to understand, what it's like to work with Kotti</li>
                 </ul>
               </li>
             </ul>
@@ -148,19 +148,26 @@
           </h1>
           <section id="subsection_why_orly" class="fragments">
             <aside class="notes">
-              <p>
-                As a matter of fact all of the Kotti core developers have some common history
-              </p>
+              <ul>
+                <li>so…</li>
+                <li>another web application framework</li>
+                <li>really???</li>
+                <li>aren't there already dozens, or even hundreds of them around?</li>
+                <li>why not just pick one of them?</li>
+                <li>
+                  As a matter of fact all of the Kotti core developers have some common history
+                </li>
+              </ul>
             </aside>
             <h2>
               Yet another web framework?
             </h2>
             <img src="img/orly.jpg" alt="O RLY?" class="fragment">
-            <div class="fragment">
+<!--             <div class="fragment">
               <p>Aren't there already dozens (hundreds?) out there?</p>
               <p>Just pick one!</p>
             </div>
-          </section>
+ -->          </section>
         </section>
 
         <section id="plone">
@@ -177,18 +184,18 @@
             <aside class="notes">
               <ul>
                 <dl>
-                  <dt>OFS</dt>
-                  <dd>simple, yet effective way to persist objects</dd>
-                  <dd>more or less plain Python objects are stored in an object DB</dd>
-                  <dd>supports a folder / file like object tree</dd>
+                  <dt>Full featured CMS</dt>
+                  <dt>Has lots and lots of add ons (of varying quality, but still.</dt>
+                  <dt>Uses Object File System</dt>
+                  <dd>A simple, yet effective way to persist objects.</dd>
+                  <dd>More or less plain Python objects are stored in an object DB.</dd>
+                  <dd>It supports a folder / file like object tree.</dd>
                   <dt>security</dt>
-                  <dd>great security features</dd>
-                  <dd>groups, users, roles, permissions</dd>
-                  <dd>enables to write applications with very fine grained security</dd>
-                  <dd>also: great security track record</dd>
-                  <dd>very few vulnerabilities compared to other systems of that kind</dd>
-                  <dt>workflows</dt>
-                  <dd>killer feature, that was unprecedented at that time</dd>
+                  <dd>Has great security features.</dd>
+                  <dd>Has the concepts of groups, users, roles and permissions which enables you to write applications with very fine grained security.</dd>
+                  <dd>also: great security track record with very few vulnerabilities compared to other systems of that kind.</dd>
+                  <dt>Workflows</dt>
+                  <dd>are an absolute killer feature, that was unprecedented at that time.</dd>
                 </dl>
               </ul>
             </aside>
@@ -219,7 +226,7 @@
             </p>
             <aside class="notes">
               <p>
-                <strong>Often too many</strong> features out of the box
+                It often has <strong>too many</strong> features out of the box, that you just don't need.
               </p>
             </aside>
           </section>
@@ -233,14 +240,14 @@
             <aside class="notes">
               <ul>
                 <li>
-                  particulary caused by the underlying software stack
+                  This is particulary caused by the underlying software stack
                 </li>
                 <li>huge: consists of some 300 packages</li>
                 <li>
                   uses multiple competing technologies, which
                 </li>
                 <li>
-                  doesn't conform to "The Zen of Python"
+                  don't conform to "The Zen of Python"
                   <ul>
                     <li>
                       to have &ldquo;preferably <strong>only one</strong> obvious <strong>way to do</strong>&rdquo; things
@@ -322,7 +329,7 @@
                 Is
                 <ul>
                   <li>pythonic and rather</li>
-                  <li>low level, which is why you can also count into the group of microframeworks</li>
+                  <li>low level, which is why you can also sort it into the group of microframeworks</li>
                 </ul>
                 And it's also… unopinionated, which means it
                 <ul>
@@ -383,6 +390,13 @@
               <li>perfect foundation!</li>
             </ul>
             <aside class="notes">
+              so…
+              <ul>
+                <li>Pyramid only provides what you need in every web application.</li>
+                <li>Doesn't come with unneeded ballast.</li>
+                <li>There's no need to waste time fighting the framework's decisions</li>
+                <li>This makes it a perfect foundation for your own frameowrk.</li>
+              </ul>
               …what's left to do: make some choices that pyramid didn't make for us (by intention).
             </aside>
           </section>
@@ -402,6 +416,14 @@
                 authentication &amp; authorization sources
               </li>
             </ul>
+            <aside class="notes">
+              Choices we need to make are about
+              <ul>
+                <li><strong>persistence:</strong> obviosly need some means of storage for most applications</li>
+                <li><strong>templating, forms and user input validation:</strong></li>
+                <li><strong>authentication &amp; authorization sources</strong></li>
+              </ul>
+            </aside>
           </section>
         </section>
 
@@ -438,7 +460,7 @@
           <section>
             <aside class="notes">
               <p>
-                Now we can implement a Node class in pure SQLAlchemy, that implements what we had with the Object Filesystem in Zope
+                Kotti implements a Node class in pure SQLAlchemy, that implements what we had with the Object Filesystem in Zope.
               </p>
             </aside>
             <h1>
@@ -559,9 +581,9 @@ print Node.query.filter(Node.title == 'My Document').one()
             </code></pre>
             <aside class="notes">
               <ul>
-                <li>SQLAlchemy is set up to do polymorphic queries</li>
-                <li>single query can return objects of multiple types</li>
-                <li>querying for Nodes will hand you back instances of Document and File if the Nodes happen to be of that types.</li>
+                <li>In Kotti SQLAlchemy is set up to do polymorphic queries.</li>
+                <li>Single query can return objects of multiple types.</li>
+                <li>For example querying for Nodes will hand you back instances of Document and File if the Nodes happen to be of that types.</li>
               </ul>
             </aside>
           </section>
@@ -575,6 +597,11 @@ print Node.query.filter(Node.title == 'My Document').one()
             <aside class="notes">
               <p>Joined Table Inheritance is another nice feature of SQLAlchemy that we use in Kotti.</p>
               <p>It means that…</p>
+              <ul>
+                <li>class hierarchy is broken up among dependent tables.</li>
+                <li>Each class is represented by its own table.</li>
+                <li>The respective table only includes attributes local to that class.</li>
+              </ul>
             </aside>
           </section>
           <section>
@@ -590,16 +617,16 @@ print Node.query.filter(Node.title == 'My Document').one()
               </li>
             </ul>
             <aside class="notes">
-              The last feature of SQLAlchemy, that I'd like to mention are Eents.
+              The last feature of SQLAlchemy, that I'd like to mention are Events.
               <ul>
                 <li>
                   SQLAlchemy has a lot of them, but in Kotti we use only one: before_flush
                 </li>
                 <li>
-                  a flush is basically the moment when SQLAlchemy talks to the database.
+                  A flush is basically the moment when SQLAlchemy talks to the database.
                 </li>
                 <li>
-                  it is NOT the same as a commit. it's SQLAlchemy emitting SQL and sending it to the DB.
+                  It is NOT the same as a commit. It rather is SQLAlchemy emitting SQL and sending it to the DB, which can happen multiple times during a transaction. ((unit of work pattern))
                 </li>
                 <li>
                   Of course a commit always includes a flush.
@@ -616,26 +643,26 @@ print Node.query.filter(Node.title == 'My Document').one()
               <li>DML</li>
               <li>environments</li>
             </ul>
+            <aside class="notes">
+              Not exactly part of SQLAlchemy, but closely related (and also written by Mike Bayer) is Alembic.
+              <ul>
+                <li>DB Migration tool that supports</li>
+                <li>transactional Data Definition Language operations (such as CREATE or ALTER TABLE) and</li>
+                <li>transactional Data Manipulation Language operations.</li>
+              </ul>
+              Another useful feature:
+              <ul>
+                <li>supports multiple environments.</li>
+                <li>Comes in extremely handy for add ons in Kotti: each add on can have its own, independent migration steps.</li>
+              </ul>
+              <p>
+                Kotti provides a script to perform either specific migrations or all migrations for itself and all add ons at once. You can either upgrade to specific revisions or to the latest known revision.
+              </p>
+              <p>
+                Downgrades are also supported for the case that something goes south during a migration and your DB does not support transactional DDL.
+              </p>
+            </aside>
           </section>
-          <aside class="notes">
-            Not exactly part of SQLAlchemy, but closely related (and also written by Mike Bayer) is Alembic.
-            <ul>
-              <li>DB Migration tool that supports</li>
-              <li>transactional Data Definition Language operations (such as CREATE or ALTER TABLE) - if the used DBMS supports those (TTBOMK PostgreSQL and MSSQL) and</li>
-              <li>transctional Data Manipulation Language operations.</li>
-            </ul>
-            Another useful feature:
-            <ul>
-              <li>supports multiple environments.</li>
-              <li>Comes in extremely handy for add ons: each add on can have its own, independent migration steps.</li>
-            </ul>
-            <p>
-              Kotti provides a script to perform either specific migrations or all migrations for itself and all add ons at once. You can either upgrade to specific revisions or to the latest known revision.
-            </p>
-            <p>
-              Downgrades are also supported for the case that something goes south during a migration and your DB does not support transactional DDL.
-            </p>
-          </aside>
         </section>
 
         <section>
@@ -665,6 +692,16 @@ print Node.query.filter(Node.title == 'My Document').one()
           <img src="img/colander_deform.png" alt="Colander & Deform"
                height="150">
           <section>
+            <aside class="notes">
+              Next: forms. Most form libraries handle
+              <ul>
+                <li>creation of forms as well as their validation.</li>
+                <li>Colander and Deform are different in that aspect.</li>
+                <li>With Colander you can (bulletpoints).</li>
+                <li>But it doesn't know anything about forms at all.</li>
+              </ul>
+              This is where deforms comes in…
+            </aside>
             <h2>Colander</h2>
             <ul>
               <li>
@@ -698,6 +735,19 @@ print Node.query.filter(Node.title == 'My Document').one()
                 outputs Bootstrap 3 forms (Deform 2)
               </li>
             </ul>
+            <aside class="notes">
+              Deform…
+              <ul>
+                <li>…only renders forms from datastructures passed by colander.</li>
+                <li>Deform 2 uses Bootstrap 3 by default.</li>
+                <li>In fact Deform 2 is a merge of Deform 1 and deform_bootstrap, that we developed for earlier versions of Kotti. (it was a set of bootstrap templates for deform)</li>
+                <li>Doesn't know anything about serialization or validation</li>
+              </ul>
+              This decoupling absolutely makes sense, as you might want to
+              <ul>
+                <li>take user input not only from forms, but as well as from say Javascript applications or XML RPC endpoints or similar.</li>
+              </ul>
+            </aside>
           </section>
         </section>
 
@@ -705,6 +755,15 @@ print Node.query.filter(Node.title == 'My Document').one()
           <img src="img/repoze.workflow.png" alt="repoze.workflow"
                height="150">
           <section>
+            <aside class="notes">
+              repoze.workflow is another package from the Pylons ecosystem.
+              <ul>
+                <li>A content workflow system that supports the concepts of <strong>states</strong> and <strong>transitions</strong>.</li>
+                <li><strong>States</strong> define a role to permission mapping</li>
+                <li><strong>Transitions</strong> define transitions between states, and the circumstances in which the transition may be executed</li>
+              </ul>
+              repoze.workflow allows us to implement the complete and exact feature set of the aforementioned killer feature of Zope and Plone in a very easy way.
+            </aside>
             <ul>
               <li>
                 a content workflow system
@@ -766,6 +825,15 @@ print Node.query.filter(Node.title == 'My Document').one()
                 see talk on tuesday, 11:00 in Barria2 room!
               </li>
             </ul>
+            <aside class="node">
+              Another giant that recently made it into Kotti is Depot. It's a package for…
+              <ul>
+                <li>storing and serving files in web applications.</li>
+                <li>it supports: (bulletpoints)</li>
+                <li>Don't get drawn away by its version (0.0.6 ATM)!</li>
+                <li>Excellent docs, good codebase, complete test coverage.</li>
+              </ul>
+            </aside>
           </section>
         </section>
 
@@ -775,6 +843,10 @@ print Node.query.filter(Node.title == 'My Document').one()
             <h1>
               Wiring it all together…
             </h1>
+            <aside class="notes">
+              <p>Let's finally come to Kotti itself.</p>
+              <p>As mentioned in the talk outline, it's a rather small package, that wires all those giants together in a sensible way.</p>
+            </aside>
           </section>
           <section>
             <aside class="notes">
@@ -783,11 +855,13 @@ print Node.query.filter(Node.title == 'My Document').one()
                 <li>i learned about and joined in 2012 (Plone Konferenz)</li>
                 <li>biggest mistake in terms of marketing: 0.6 should've been 1.0 already</li>
                 <li>number of features in 0.10 alone would have justified 3 or 4 releases / versions</li>
-                <li>switched to semver with 1.0.0</li>
+                <li>with 1.0.0 switched to semver (major increases with backward incompatible changes, minor increases with feature additions and patch is reserved for bugfixes)</li>
                 <li>9k according to PyPI</li>
-                <li>5 contibutors with push permission</li>
-                <li>~40 contibutors overall</li>
-                <li>even if it's just a missing comma in the docs</li>
+                <li>5 contributors with push permission</li>
+                <li>~40 contibutors overall.</li>
+                <li>That makes us a still small, but active & healthy community.</li>
+                <li>Of course contributions are always welcome</li>
+                <li>even (or especially) if it's just a missing comma or some unclear wording in the docs.</li>
               </ul>
             </aside>
             <ul>
@@ -804,19 +878,23 @@ print Node.query.filter(Node.title == 'My Document').one()
             <h1 class="strong">Code Quality</h1>
             <p>a.k.a. "everyone loves badges"</p>
             <aside class="notes">
+              We pay great attention to code quality
               <ul>
-                <li>extensive test suite</li>
-                <li>based on py.test</li>
-                <li>heavy use of reusable fixtures</li>
+                <li>extensive test suite based on py.test</li>
+                <li>Heavy use of reusable fixtures.</li>
+                <li>Fixtures are exposed a a pytest plugin, that you can easily use in your addons' tests.</li>
               </ul>
               <ul>
                 <li>Travis CI</li>
-                <li>every commit and pul request</li>
+                <li>every commit and pull request</li>
               </ul>
               <ul>
-                <li>recently a number of toosl came into life</li>
+                <li>recently a number of tools for static source code analysis came into life</li>
                 <li>you shouldn't blindly follow all of their suggestions / issues they report, some of them are non-issues</li>
                 <li>BUT they can give VERY valueable insights on your code and help you improve</li>
+              </ul>
+              <ul>
+                <li>Also try very hard to keep all of our requirements up to date and continue to succeed with that with one minor exception in our testing requirements. So technically the last badge is lying a bit.</li>
               </ul>
             </aside>
             <div class="fragments">
@@ -865,10 +943,12 @@ print Node.query.filter(Node.title == 'My Document').one()
  -->
           <section>
             <aside class="notes">
+              Configuration of Kotti is done completely through a PasteScript INI file as shown here. Kotti is a plain Pyramid and therefore also WSGI application that can be run under your prefered WSGI server.
               <dl>
                 <dt>fanstatic</dt>
                 <dd>Fanstatic is a framework for the automatic publication of Javascript and CSS resources on a web page.</dd>
-                <dd>when we started using it in 2012 most JS libraries were not available through a package manager (NPM / Bower) and build tools for JS/CSS didn't exist.</dd>
+                <dd>When we started using it in 2012 most JS libraries were not available through a package manager (NPM / Bower) and build tools for JS/CSS didn't exist in the way they do today.</dd>
+                <dd>We currently are thinking bout if it makes sense to get rid of fanstatic in Kotti v2, but we're not sure yet what would be a better story.</dd>
               </dl>
             </aside>
             <h1 class="strong">Configuration</h1>
@@ -886,9 +966,28 @@ use = egg:fanstatic#fanstatic
 [pipeline:main]
 pipeline =
     fanstatic
-    kotti</code></pre>
+    kotti
+
+[server:main]
+use = egg:waitress#main
+host = 127.0.0.1
+port = 5000
+</code></pre>
           </section>
           <section>
+            <aside class="notes">
+            <ul>
+              <li>
+                Almost every aspect of Kotti can be configured with an option in the INI file.
+              </li>
+              <li>
+                Kotti provides sensible defaults for each option, so you don't have to specify any of them.
+              </li>
+              <li>
+                I'm starting to run out of time already, so I won't go into detail here.
+              </li>
+            </ul>
+            </aside>
             <h1 class="strong">Example Options</h1>
             <table>
               <thead>
@@ -972,9 +1071,11 @@ pipeline =
           </section>
           <section>
             <aside class="notes">
+              <p>Let me give you just 1 example of how we combine multiple "best of breed" components to a fully functional system.</p>
+              <p>w.r.t. security we use: (bulletpoints)</p>
               <ul>
                 <li>
-                  Let me give you just 1 example of how we combine multiple "best of breed" components to a fully functional system
+
                 </li>
                 <li>
                   ACLs are JSON serialized Pyramid ACLs
@@ -1018,6 +1119,26 @@ pipeline =
         </section>
 
         <section id="section_example">
+          <aside class="notes">
+            Finally let's a Kotti add on, to show you what working with Kotti feels like.
+            <ul>
+              <li>We provide a complete Kotti scaffold (based on Pyramid's pcreate command) with Kotti.</li>
+              <li>After running that command, you have a fully functional add-on for Kotti, with a complete test suite and CI on Travis CI setup already.</li>
+            </ul>
+            The created package also contains…
+            <ul>
+              <li>a custom content type</li>
+              <li>a default and alternate view for that type</li>
+              <li>completely setup i18n infrastructure</li>
+              <li>an also completely setup alembic environment, so that you only need to write the actual migration steps (if that should be needed for future versions of your add on)</li>
+              <li>fanstatic resources local to this add on</li>
+            </ul>
+            The scaffold is also…
+            <ul>
+              <li>…always kept up to date, to adhere to the most recent code conventions as suggested by the Kotti team</li>
+              <li>completely tested within our CI setup, so that we can be sure it is working as expected at any time.</li>
+            </ul>
+          </aside>
           <h1>Example</h1>
           <section>
             <h2 class="strong">Creating an addon</h2>
@@ -1038,6 +1159,15 @@ Mailing List:  https://groups.google.com/group/kotti
             </code></pre>
           </section>
           <section>
+            <aside class="notes">
+              The custom content type looks similar to this.
+              <ul>
+                <li>It inherits from Kotti's Content class, which is again a sane default that you probably should inherit all your types from.</li>
+                <li>It has an ID column, that is both the PK and a FK to the parent table's id column. This is needed for SQLAlchemy's Joined Table Inheritance.</li>
+                <li>Then it has the attributes that are actualy added by this class in addition to the inherited ones.</li>
+                <li>Last there's a type_info, that tells Kotti how, where and under wich conditions that Content Type should be made available through the UI.</li>
+              </ul>
+            </aside>
             <h2 class="strong">
               Custom Content Type
             </h2>
@@ -1060,6 +1190,10 @@ class Document(Content):</code><code class="fragment">
             <img src="img/screen_addmenu.png" alt="Add menu">
           </section>
           <section>
+            <aside class="notes">
+              <p>Next there's the Colander schema definition, responsible for (de-)serialization, validation and form creation.</p>
+              <p>It by default also inherits from the parent's schema and only adds schema nodes provided by the custom content type.</p>
+            </aside>
             <h2 class="strong">
               Schema definition for <br>
               validation and form creation
@@ -1077,6 +1211,15 @@ class DocumentSchema(ContentSchema):
           </section>
 
           <section>
+            <aside class="notes">
+              The add and edit forms are declared like this:
+              <ul>
+                <li>They're, like everything in Kotti, plain Pyramid views that are configured by the usual view_config decorator.</li>
+                <li>They're protected by some permissions, that you can – again, like everything in Kotti – adjust to fit your specific needs.</li>
+                <li>The actual form rendering and validation is again provided by the base classes. You don't have to do anything yourself, unless you want something to be done differently.</li>
+                <li>What you see here is a complete and working example!</li>
+              </ul>
+            </aside>
             <h2 class="strong">Add / edit forms</h2>
             <pre><code>from kotti.resources import Document
 from kotti.views.form import AddFormView
@@ -1097,11 +1240,39 @@ class DocumentEditForm(EditFormView):
           </section>
           <section>
             <img src="img/screen_addform.png" alt="Add form">
+            <aside class="notes">
+              This is what the forms from that example look like: plain Bootstrap, good looking by default, easily customizable.
+            </aside>
           </section>
           <section>
             <img src="img/screen_addvalidation.png" alt="Add validation">
+            <aside class="notes">
+              This is a validation error.
+              <ul>
+                <li>All error messages, as well as labels are fully internationalized.</li>
+                <li>
+                  We currently ship with translations for 8 languages. As always: contributions are very welcome.
+                </li>
+              </ul>
+            </aside>
           </section>
           <section class="fragments">
+            <aside class="notes">
+              Last but not least, here's the code for some views for our content type
+              <ul>
+                <li>again, it's just ordinary Pyramid views, just like everything in Kotti.</li>
+                <li>In this first view we specify a template for rendering.</li>
+                <li>In Kotti we use Chameleon templates (as we're used to them because of our Plone / Zope history).</li>
+                <li>If you prefer some other templating language: just use it. You can even mix arbitrary templating languages, because Pyramid supports that of course.</li>
+              </ul>
+              This does exactly the same, just in a class based approach.
+              <ul>
+                <li>Nice thing about it: you can group multiple views that share some common code or view configuration.</li>
+                <li>You can then add additional views with even less code.</li>
+                <li>Of course views don't need to be rendered via templates, they can for example also provide JSON.</li>
+                <li>Again: this all is working and complete code, not just excerpts.</li>
+              </ul>
+            </aside>
             <h2 class="strong">View(s)</h2>
             <pre><code class="python">from pyramid.view import view_config
 @view_config(name='view', context=Document, permission='view',
@@ -1117,7 +1288,7 @@ from pyramid.view import view_defaults
 from kotti.views import BaseView
 
 @view_defaults(context=Document, permission='view')
-class DocumentViews(BaseView):</code><code class="fragment">
+class DocumentViews(BaseView):
     @view_config(name='view', renderer='kotti:templates/view/document.pt')
     def view(self):
         return {}</code><code class="fragment">
@@ -1132,6 +1303,10 @@ class DocumentViews(BaseView):</code><code class="fragment">
             </div>
           </section>
           <section>
+            <aside class="notes">
+              <p>Finally this is the template our view uses. Nothing special again.</p>
+              <p>The templates provided by Kotti (like the tags template included in this example) can of course be individually overriden.</p>
+            </aside>
             <h2 class="strong">Template(s)</h2>
             <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html xmlns="http://www.w3.org/1999/xhtml"
@@ -1148,19 +1323,64 @@ class DocumentViews(BaseView):</code><code class="fragment">
 &lt;/html&gt;</code></pre>
           </section>
           <section>
+            <aside class="notes">
+              This is what it looks like. And that finishes the example.
+            </aside>
             <img src="img/screen_added.png" alt="Added">
           </section>
         </section>
 
         <section>
+          <aside class="notes">
+            So, what are the future plans for Kotti?
+            <ul>
+              <li>
+                Most important: Kotti will always stay <cite>&ldquo;lean and mean in all of the right ways&rdquo;</cite>
+              </li>
+              <li>
+                Nothing will go into the core unless really necessary.
+              </li>
+              <li>
+                We're even thinking of moving some code and features out of the core again and provide them as add-ons to make Kotti even leaner than it already is.
+              </li>
+              <li>
+                Examples for that would be the multifile upload, which is a nice and very user friendly feature, but that's simply not needed for most applications and brings in some JS requirements that were not needed otherwise.
+              </li>
+            </ul>
+            Python 3 support
+            <ul>
+              <li>
+                shouldn't actually be that hard.
+              </li>
+              <li>
+                All of our dependencies are Python 3 ready by now and the Kotti code already has a lot "from future imports" and stuff like that.
+              </li>
+              <li>
+                As Kotti's development is primarily need driven and apparently no one has had the urgent enough need for Python 3 support yet, it simply hasn't been done yet.
+              </li>
+              <li>
+                If someone would be interested in working on that during the conference: I'd be happy to team up on that!
+              </li>
+            </ul>
+          </aside>
           <h1>The Future</h1>
           <ul>
             <li>
               will always stay <cite>&ldquo;lean and mean in all of the right ways&rdquo;</cite>
             </li>
+            <li>
+              Python 3 support
+            </li>
           </ul>
         </section>
         <section>
+          <aside class="notes">
+            <ul>
+              <li>So: that's it.</li>
+              <li>Thank you for listening!</li>
+              <li>Any questions?</li>
+            </ul>
+          </aside>
           <h2>Thank you!</h2>
           <h1 class="strong">
             Questions?
