@@ -25,7 +25,6 @@
           href="css/custom.css"
           id="theme">
     <!-- Printing and PDF exports -->
-    <!--
     <script>
       var link = document.createElement( 'link' );
       link.rel = 'stylesheet';
@@ -33,7 +32,6 @@
       link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
       document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
-    -->
     <!--[if lt IE 9]>
     <script src="lib/js/html5shiv.js"></script>
     <![endif]-->
@@ -215,7 +213,7 @@
                 </li>
                 <li>BUT</li>
                 <li>
-                  if you need to implement a highly customized application with some CMS-ish features, it can quickly become a major pain.
+                  if you need to implement a highly customized application with some CMS like features, it can quickly become overkill and a major pain.
                 </li>
               </ul>
             </aside>
@@ -450,6 +448,7 @@
               </li>
             </ul>
             <aside class="notes">
+              (bulletpoints)
               <ul>
                 <li>
                   Particularly useful: transactions can be bound to the lifecycle of a Pyramid request <br>through the use of the <code>pyramid_tm</code> and <code>zope.sqlalchemy</code> packages.
@@ -462,6 +461,7 @@
               <p>
                 Kotti implements a Node class in pure SQLAlchemy, that implements what we had with the Object Filesystem in Zope.
               </p>
+              <p>(bulletpoints)</p>
             </aside>
             <h1>
               <i class="fa fa-sitemap"></i>
@@ -685,6 +685,15 @@ print Node.query.filter(Node.title == 'My Document').one()
             <p>
               <img src="img/bootstrap_components.png" alt="Bootstrap">
             </p>
+            <aside class="notes">
+              <p>
+                Unless you have a UI designer on your team and can be sure that he or she will stay, you shouldn't even try to invent something yourself.
+              </p>
+              <p>
+                Instead: just use Bootstrap.
+              </p>
+              <p>(bulletpoints)</p>
+            </aside>
           </section>
         </section>
 
@@ -817,21 +826,21 @@ print Node.query.filter(Node.title == 'My Document').one()
                     files are handled like a plain model attribute
                   </li>
                   <li>
-                    transaction aware: Rollback causes the files to be deleted
+                    transaction aware
                   </li>
                 </ul>
               </li>
-              <li>
-                see talk on tuesday, 11:00 in Barria2 room!
-              </li>
             </ul>
-            <aside class="node">
+            <aside class="notes">
               Another giant that recently made it into Kotti is Depot. It's a package for…
               <ul>
                 <li>storing and serving files in web applications.</li>
                 <li>it supports: (bulletpoints)</li>
+                <li><strong>transaction aware</strong> rollback or abort of a transaction causes the files to be deleted from the configured backend</li>
                 <li>Don't get drawn away by its version (0.0.6 ATM)!</li>
                 <li>Excellent docs, good codebase, complete test coverage.</li>
+                <li>There's a dedicated talk on Depot tomorrow at 11:00 in the Barria2 room. Don't miss it!
+                </li>
               </ul>
             </aside>
           </section>
@@ -851,17 +860,27 @@ print Node.query.filter(Node.title == 'My Document').one()
           <section>
             <aside class="notes">
               <ul>
-                <li>first prototype in just 2 days</li>
-                <li>i learned about and joined in 2012 (Plone Konferenz)</li>
-                <li>biggest mistake in terms of marketing: 0.6 should've been 1.0 already</li>
-                <li>number of features in 0.10 alone would have justified 3 or 4 releases / versions</li>
-                <li>with 1.0.0 switched to semver (major increases with backward incompatible changes, minor increases with feature additions and patch is reserved for bugfixes)</li>
-                <li>9k according to PyPI</li>
+                <li>Started by Daniel Nouri in 2011.</li>
+                <li>He did the first version in just 2 days and that version already contained most of the Node class i mentioned before.</li>
+                <li>I learned about Kotti and joined the project a year later, in 2012 (Plone Konferenz)</li>
+              </ul>
+              <ul>
+                <li>1.0.0 in January 2015</li>
+                <li>Biggest mistake in terms of marketing: we should've released a v1.0 in place of 0.6 or 0.7 already.</li>
+                <li>Kotti was already absolutely stable and used in several production systems at that time, so calling it 1.0 would definitively have been justified.</li>
+                <li>The Number of features in 0.10 alone would have justified 3 or 4 releases / versions.</li>
+                <li>With 1.0.0 switched to semver
+                <ul>
+                  <li>major version increases with backward incompatible changes</li>
+                  <li>minor version increases with feature additions</li>
+                  <li>and patch is reserved for bugfixes</li>
+                </ul>
+                </li>
+                <li>~9k dl/month according to PyPI</li>
                 <li>5 contributors with push permission</li>
                 <li>~40 contibutors overall.</li>
                 <li>That makes us a still small, but active & healthy community.</li>
-                <li>Of course contributions are always welcome</li>
-                <li>even (or especially) if it's just a missing comma or some unclear wording in the docs.</li>
+                <li>Of course contributions are always welcome, even (or especially) if it's just a missing comma or some unclear wording in the docs.</li>
               </ul>
             </aside>
             <ul>
@@ -985,6 +1004,9 @@ port = 5000
               </li>
               <li>
                 I'm starting to run out of time already, so I won't go into detail here.
+              </li>
+              <li>
+                The important thing to take away from this is: you can override almost everthing in Kotti, but you dont need to.
               </li>
             </ul>
             </aside>
@@ -1119,8 +1141,10 @@ port = 5000
         </section>
 
         <section id="section_example">
+          <h1>Example</h1>
+          <section>
           <aside class="notes">
-            Finally let's a Kotti add on, to show you what working with Kotti feels like.
+            Finally let's create a Kotti add on, to show you what it's like to work with Kotti.
             <ul>
               <li>We provide a complete Kotti scaffold (based on Pyramid's pcreate command) with Kotti.</li>
               <li>After running that command, you have a fully functional add-on for Kotti, with a complete test suite and CI on Travis CI setup already.</li>
@@ -1130,17 +1154,15 @@ port = 5000
               <li>a custom content type</li>
               <li>a default and alternate view for that type</li>
               <li>completely setup i18n infrastructure</li>
-              <li>an also completely setup alembic environment, so that you only need to write the actual migration steps (if that should be needed for future versions of your add on)</li>
+              <li>an also completely setup alembic environment, so that you only need to write the actual migration steps (if that should become necessary in future versions of your add on)</li>
               <li>fanstatic resources local to this add on</li>
             </ul>
             The scaffold is also…
             <ul>
-              <li>…always kept up to date, to adhere to the most recent code conventions as suggested by the Kotti team</li>
+              <li>…always kept up to date, to adhere to the most recent coding conventions as suggested by the Kotti team</li>
               <li>completely tested within our CI setup, so that we can be sure it is working as expected at any time.</li>
             </ul>
           </aside>
-          <h1>Example</h1>
-          <section>
             <h2 class="strong">Creating an addon</h2>
             <pre><code class="shell">$ pcreate -s kotti kotti_myaddon
 Author name [Andreas Kaiser]:
@@ -1191,7 +1213,7 @@ class Document(Content):</code><code class="fragment">
           </section>
           <section>
             <aside class="notes">
-              <p>Next there's the Colander schema definition, responsible for (de-)serialization, validation and form creation.</p>
+              <p>Next there's the Colander schema definition, responsible for serialization, deserialization, validation and form creation through Deform.</p>
               <p>It by default also inherits from the parent's schema and only adds schema nodes provided by the custom content type.</p>
             </aside>
             <h2 class="strong">
@@ -1268,7 +1290,7 @@ class DocumentEditForm(EditFormView):
               This does exactly the same, just in a class based approach.
               <ul>
                 <li>Nice thing about it: you can group multiple views that share some common code or view configuration.</li>
-                <li>You can then add additional views with even less code.</li>
+                <li>You can then add additional views with even less code or configuration.</li>
                 <li>Of course views don't need to be rendered via templates, they can for example also provide JSON.</li>
                 <li>Again: this all is working and complete code, not just excerpts.</li>
               </ul>
@@ -1377,6 +1399,7 @@ class DocumentViews(BaseView):
           <aside class="notes">
             <ul>
               <li>So: that's it.</li>
+              <li>Try it out yourself to experience all the fun it is to develop with Kotti.</li>
               <li>Thank you for listening!</li>
               <li>Any questions?</li>
             </ul>
